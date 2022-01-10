@@ -14,7 +14,11 @@ import numpy as c
 import joblib
 from azureml.data.dataset_factory import TabularDatasetFactory
 
-ds = TabularDatasetFactory.from_delimited_files("https://mlstrg174021.blob.core.windows.net/azureml-blobstore-0c6f7c05-574b-4187-aa80-0e030f1bc447/UI/01-09-2022_111757_UTC/divorce_data.csv")
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+dataset = TabularDatasetFactory.from_delimited_files("https://mlstrg174280.blob.core.windows.net/azureml-blobstore-8bd3f096-2300-4e84-a5a3-356919910b82/UI/01-10-2022_070404_UTC/divorce_data.csv")
 
 df = dataset.to_pandas_dataframe()
 df = df.sample(frac=1)
@@ -44,7 +48,7 @@ print(y_test.shape)
 
 
 # %%
-parser = argparse.ArgumentPrase()
+parser = argparse.ArgumentParser()
 parser.add_argument('--e', type=int, default=1000, help="Number of estimators")
 parser.add_argument('--md', type=int, default=100, help="Max Depth")
 parser.add_argument('--msp', type=int, default=5, help="Min Samples Split")
