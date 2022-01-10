@@ -18,7 +18,10 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # azureml-dataprep[pandas] of version 1.1.34 or higher is required
 from azureml.core import Workspace, Dataset
 
-dataset = TabularDatasetFactory.from_delimited_files("https://mlstrg174280.blob.core.windows.net/azureml-blobstore-8bd3f096-2300-4e84-a5a3-356919910b82/UI/01-10-2022_070404_UTC/divorce_data.csv")
+ws = Workspace.from_config()
+
+dataset = Dataset.get_by_name(ws, name='divorce-ds')
+#dataset = TabularDatasetFactory.from_delimited_files("https://mlstrg174280.blob.core.windows.net/azureml-blobstore-8bd3f096-2300-4e84-a5a3-356919910b82/UI/01-10-2022_070404_UTC/divorce_data.csv")
 
 df = dataset.to_pandas_dataframe()
 df = df.sample(frac=1)
