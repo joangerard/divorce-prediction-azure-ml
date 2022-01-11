@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 # %%
-
-# %%
 # azureml-core of version 1.0.72 or higher is required
 # azureml-dataprep[pandas] of version 1.1.34 or higher is required
 from azureml.core import Workspace, Dataset
@@ -18,11 +16,13 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # azureml-dataprep[pandas] of version 1.1.34 or higher is required
 from azureml.core import Workspace, Dataset
 
-ws = Workspace.from_config()
+subscription_id = 'aa7cf8e8-d23f-4bce-a7b9-1f0b4e0ac8ee'
+resource_group = 'aml-quickstarts-174280'
+workspace_name = 'quick-starts-ws-174280'
 
-dataset = Dataset.get_by_name(ws, name='divorce-ds')
-#dataset = TabularDatasetFactory.from_delimited_files("https://mlstrg174280.blob.core.windows.net/azureml-blobstore-8bd3f096-2300-4e84-a5a3-356919910b82/UI/01-10-2022_070404_UTC/divorce_data.csv")
+workspace = Workspace(subscription_id, resource_group, workspace_name)
 
+dataset = Dataset.get_by_name(workspace, name='divorce-ds')
 df = dataset.to_pandas_dataframe()
 df = df.sample(frac=1)
 
