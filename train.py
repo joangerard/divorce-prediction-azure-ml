@@ -16,13 +16,7 @@ from azureml.data.dataset_factory import TabularDatasetFactory
 # azureml-dataprep[pandas] of version 1.1.34 or higher is required
 from azureml.core import Workspace, Dataset
 
-subscription_id = 'aa7cf8e8-d23f-4bce-a7b9-1f0b4e0ac8ee'
-resource_group = 'aml-quickstarts-174280'
-workspace_name = 'quick-starts-ws-174280'
-
-workspace = Workspace(subscription_id, resource_group, workspace_name)
-
-dataset = Dataset.get_by_name(workspace, name='divorce-ds')
+dataset = TabularDatasetFactory.from_delimited_files(path='divorce_data.csv')
 df = dataset.to_pandas_dataframe()
 df = df.sample(frac=1)
 
