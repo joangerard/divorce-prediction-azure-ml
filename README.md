@@ -36,34 +36,69 @@ Here we can see the RunDetails widget display that shows how the AutoML pipeline
 
 Once the pipeline finishes to run we can see what models were used by AutoML: 
 
-![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/5.png)
+![models](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/5.png)
 
-Also we can retried the best model together with the parameters used via AzureSDK:
+Also we can retrieve the best model together with its parameters via AzureSDK:
 
-![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/4.png)
+![parameters](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/4.png)
 
 The model is also available on the Machine Learning Studio:
 
-![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/3.png)
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+![model](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/3.png)
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+Random Forest was chosen to predict the outcome because it's an ensemble model that uses many decision trees and then averages the result of their individual predictions. 
 
+The parameters to be tuned were: 
+- The number of estimators: from a random choice among 500,1000,1500,2000,and 3000
+- Max Depth: from a random choice among 10,50,100,and 150
+- Min Samples Split: from a random choice among 2, 5, and 7
+
+A Bandit Policy was also used to enable early stop.
+
+12 runs were used executed using 4 concurrent runs.
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The best model gave an accuracy of 0.99 with:
+- 3000 estimators
+- A max depth of 100
+- 2 min samples split
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+Here we can see the RunDetails widget display showing that 12/12 hypothesis (runs) were already tested. The run 23 gave the best accuracy with 0.99. 
+
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/hyperdrive/1.png)
+
+Here we can see more graphical information about the parameters and their accuracy when running the model with different parameters:
+
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/hyperdrive/2.png)
+
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/hyperdrive/3.png)
+
+We can also see the best parameters configuration and its accuracy:
+![best parameters configuration](https://github.com/joangerard/project-azure-piepline/blob/master/images/hyperdrive/4.png)
+
+We are obtaining high accuracy because the higher the number that answers the question, more are the chances to get divorced then it's easy for the random forest model to learn such a thing. We could improve the model incrementing the number of runs.
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+Both models (automl-hyperdrive) were registered.
+
+![best parameters configuration](https://github.com/joangerard/project-azure-piepline/blob/master/images/1.png)
+
+### Deployment
+Since the hyperdrive model gave a better accuracy, that's the one which is deployed. 
+In order to deploy it we need to:
+- Create an environment with the needed packages dependencies.
+- Create a deployment configuration file (LocalWebservice or AciWebservice): it's a good practice to deploy the model in a local webservice first, verify that it is working and then deploy it into an Azure Computer Instance (for development) or Azure Kubernates Instance (for production). If AciWebservice is being used we can here enable authentication and also app insights.
+- Create an inference config file that receives an entry script and the environment previosly created. The entry script is the script that will be executed when the API receives a request. It has two methods: init and run. The run method should receive the data body, process it and return the prediction made by the model previously loaded in the init method. 
+- Deploy the model providing the workspace, a name for the service, the registered model, the inference configuration, and the deployment configuration.
+
+### Consume API
+In order to consume the deployed web service, we need to:
+- We can access the swagger uri that will provide information about how to use the API.
+- Create a json data with the answers to the 54 questions into an array.
+- Send a request to the API url using the configured headers, authorization bearer api key and the body encoding the json data. 
+- Once the API returns a response parse it and display it. If an error occures print information about it.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
+You can see a brief explanation about the project [here](https://www.youtube.com/watch?v=4ojXFhMVkq4).
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
