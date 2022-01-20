@@ -29,8 +29,22 @@ A pipeline was created to obtain metrics information and the best model output. 
 ### Results
 The best model that AutoML found was after performing Max Absolute Scaler and the passing the data through a Random Forest Classifier with 200 estimators using bootstrap. The accuracy of such model was 0.988. We could have obtained a better performance by increasing the timeout to let AutoML experiment with more models/parameters. 
 
-![alt text](http://url/to/img.png)
+Here we can see the RunDetails widget display that shows how the AutoML pipeline is still running. Below there we can see a graph that shows the steps followed by the pipeline which is reading the divorce dataset and pass it to the AutoML step.
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/1.png)
 
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/2.png)
+
+Once the pipeline finishes to run we can see what models were used by AutoML: 
+
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/5.png)
+
+Also we can retried the best model together with the parameters used via AzureSDK:
+
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/4.png)
+
+The model is also available on the Machine Learning Studio:
+
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/3.png)
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 ## Hyperparameter Tuning
