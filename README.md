@@ -4,7 +4,7 @@
 Are we going to divorce or not? That's the question we want to answer with this project. 
 
 ## Project Set Up and Installation
-1. [Download the Dataset](hhttps://www.kaggle.com/andrewmvd/divorce-prediction) and upload it into the Datasets section in your Machine Learning Studio. 
+1. [Download the Dataset](https://www.kaggle.com/andrewmvd/divorce-prediction) and upload it into the Datasets section in your Machine Learning Studio. 
 2. Create a compute instance and open jupyter.
 3. Open a new terminal and clone the project into your compute instance.
 4. Download the config.json file from your workspace and replace it.
@@ -13,7 +13,7 @@ Are we going to divorce or not? That's the question we want to answer with this 
 ## Dataset
 
 ### Overview
-We use the [divorce prediction data set](hhttps://www.kaggle.com/andrewmvd/divorce-prediction) from Kaggle to train the models that consists in 54 questions, everyone should be answered in a scale from 0 to 4 and the outcome indicates if the couple will or not divorce. 
+We use the [divorce prediction data set](https://www.kaggle.com/andrewmvd/divorce-prediction) from Kaggle to train the models that consists in 54 questions, everyone should be answered in a scale from 0 to 4 and the outcome indicates if the couple will or not divorce. 
 
 ### Task
 All the features are used from the dataset to predict the output(0/1) that indicates if the couple will or not divorce baset on the answers provided to the questions.
