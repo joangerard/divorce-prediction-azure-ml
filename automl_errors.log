@@ -1,0 +1,7 @@
+2022-01-20 13:33:21.802 - INFO - 21048 - azureml.automl.core.dataset_utilities._save_datasets_to_json:131 - JSON serialization of input of type <class 'NoneType'> is un-supported.
+2022-01-20 13:33:21.811 - INFO - 21048 - azureml.automl.core.dataset_utilities._save_datasets_to_json:131 - JSON serialization of input of type <class 'NoneType'> is un-supported.
+2022-01-20 13:33:21.820 - INFO - 21048 - azureml.train.automl._experiment_drivers.driver_utilities.validate_input:124 - Start data validation.
+2022-01-20 13:33:21.886 - INFO - 21048 - azureml.train.automl._experiment_drivers.driver_utilities.validate_input:137 - Validation service found the data has no errors.
+2022-01-20 14:11:58.490 - INFO - 21048 - azureml.automl.runtime.distributed.utilities.horovod_initialized:70 - Horovod not found in current environment. Distribution via Horovod will be disabled.
+2022-01-20 14:12:01.395 - INFO - 21048 - azureml.automl.runtime.featurization.data_transformer.__init__:189 - Feature sweeping enabled: False
+2022-01-20 14:12:01.403 - INFO - 21048 - azureml.automl.runtime.featurization.data_transformer.__init__:190 - Feature sweeping timeout: 86400
