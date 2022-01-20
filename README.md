@@ -93,7 +93,7 @@ In order to deploy it we need to:
 - Deploy the model providing the workspace, a name for the service, the registered model, the inference configuration, and the deployment configuration.
 
 
-We can see here the deployed model showing an status of healthy indicating that it is active and ready to be consumed using its provided url.
+We can see here the deployed model showing an status of healthy indicating that it is active and ready to be consumed using its provided REST endpoint.
 ![model](https://github.com/joangerard/project-azure-piepline/blob/master/images/hyperdrive/5.png)
 
 ### Consume API
