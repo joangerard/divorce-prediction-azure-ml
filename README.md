@@ -15,6 +15,7 @@ A diagram of the project overview is found below.
 3. Open a new terminal and clone the project into your compute instance.
 4. Download the config.json file from your workspace and replace it.
 5. Execute the hyper-drive and the auto-ml jupyter notebooks.
+6. You will find the environment configuration files in the `environment_dependencies` directory.
 
 ## Dataset
 
