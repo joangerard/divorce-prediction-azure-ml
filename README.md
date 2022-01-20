@@ -52,6 +52,10 @@ The model is also available on the Machine Learning Studio:
 
 ![model](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/3.png)
 
+We can also use the `get_output()` function to obtain information about the best model run id:
+
+![model](https://github.com/joangerard/project-azure-piepline/blob/master/images/automl/7.png)
+
 ## Hyperparameter Tuning
 Random Forest was chosen to predict the outcome because it's an ensemble model that uses many decision trees and then averages the result of their individual predictions. 
 
