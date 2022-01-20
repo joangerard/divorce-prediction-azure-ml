@@ -1,6 +1,0 @@
-dependencies:
-- python=3.6.2
-- scikit-learn=0.20.3
-- pip:
-    -azureml-defaults
-    -xgboost
