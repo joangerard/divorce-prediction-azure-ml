@@ -92,6 +92,10 @@ In order to deploy it we need to:
 - Create an inference config file that receives an entry script and the environment previosly created. The entry script is the script that will be executed when the API receives a request. It has two methods: init and run. The run method should receive the data body, process it and return the prediction made by the model previously loaded in the init method. 
 - Deploy the model providing the workspace, a name for the service, the registered model, the inference configuration, and the deployment configuration.
 
+
+We can see here the deployed model showing an status of healthy indicating that it is active and ready to be consumed using its provided url.
+![model](https://github.com/joangerard/project-azure-piepline/blob/master/images/hyperdrive/5.png)
+
 ### Consume API
 In order to consume the deployed web service, we need to:
 - We can access the swagger uri that will provide information about how to use the API.
