@@ -3,6 +3,12 @@
 
 Are we going to divorce or not? That's the question we want to answer with this project. 
 
+This project will use both HyperDrive and AutoML which are tools provided by Azure ML. We import the [divorce-prediction dataset](https://www.kaggle.com/andrewmvd/divorce-prediction) into our workspace, we train a model using AutoML, we compare which of them is performing better (higher accuracy), we deploy such model using AzureSDK, and finally, we test the model end point sending fake data and getting a divorce prediction in exchange.
+
+A diagram of the project overview is found below. 
+
+![RunDetails](https://github.com/joangerard/project-azure-piepline/blob/master/images/2.png)
+
 ## Project Set Up and Installation
 1. [Download the Dataset](https://www.kaggle.com/andrewmvd/divorce-prediction) and upload it into the Datasets section in your Machine Learning Studio. 
 2. Create a compute instance and open jupyter.
@@ -102,6 +108,32 @@ In order to consume the deployed web service, we need to:
 - Create a json data with the answers to the 54 questions into an array.
 - Send a request to the API url using the configured headers, authorization bearer api key and the body encoding the json data. 
 - Once the API returns a response parse it and display it. If an error occures print information about it.
+
+A sample input of three quiz answers will be send in the body such as:
+```
+{
+  "data": [
+    [1,4,3,2,4,2,1,4,...,4,3],
+    [3,2,3,1,3,4,3,2,...,3,4],
+    [1,4,1,1,1,0,0,1,...,0,1]
+  ]
+}
+```
+Every array corresponds to 54 elements containing the answer, each element from 0 to 4 corresponding to the answer to an individual question.
+
+A sample response will consist of a number for every quiz sent, corresponding to the prediction that the couple will or not divorce. Numbers closer to 1 means the couple will divorce whereas numbers closer to 0 means the couple will not divorce.
+
+```
+[0.99, 0.65, 0.05]
+```
+
+The model predicst that the first couple will divorce, the second has many chances to get divorced, and the last one might not divorce at all. 
+
+## Future Improvement Suggestions
+The project can be improved in many ways. 
+- The train.py script uses all 54 features to train a random forest model. We could do feature engineering here to work with only those features that are relevant for the prediction. 
+- The REST endpoint that uses the score.py file to make a prediction could have validated the data before feeding it into the model. Each value should be between 0 and 4. 
+- The process of selecting which model is more acurate, HyperDrive or AutoML, can be automatized using a pipeline for automatically check on the best accuracy and select that model to be deployed. 
 
 ## Screen Recording
 You can see a brief explanation about the project [here](https://www.youtube.com/watch?v=4ojXFhMVkq4).
