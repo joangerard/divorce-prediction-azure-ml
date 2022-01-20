@@ -3,7 +3,7 @@
 
 Are we going to divorce or not? That's the question we want to answer with this project. 
 
-This project will use both HyperDrive and AutoML which are tools provided by Azure ML. We import the [divorce-prediction dataset](https://www.kaggle.com/andrewmvd/divorce-prediction) into our workspace, we train a model using AutoML, we compare which of them is performing better (higher accuracy), we deploy such model using AzureSDK, and finally, we test the model end point sending fake data and getting a divorce prediction in exchange.
+This project will use both HyperDrive and AutoML which are tools provided by Azure ML. We import the [divorce-prediction dataset](https://www.kaggle.com/andrewmvd/divorce-prediction) into our workspace, we train a model using HyperDrive and AutoML, we compare which of them is performing better (higher accuracy), we deploy such model using AzureSDK, and finally, we test the model end point sending some data and getting a divorce prediction in exchange.
 
 A diagram of the project overview is found below. 
 
