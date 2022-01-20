@@ -72,5 +72,6 @@ run.log("Accuracy", accuracy)
 # %%
 
 
+print('prediction', np.array(rf.predict([[1 for i in range(1,55)]])))
 
 
